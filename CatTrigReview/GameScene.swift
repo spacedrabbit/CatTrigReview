@@ -16,13 +16,16 @@ class GameScene: SKScene {
   var playerVelocity = CGVector(dx: 0, dy: 0)
   let MaxPlayerAcceleration: CGFloat = 400
   let MaxPlayerSpeed: CGFloat = 200
+  let BorderCollisionDamping: CGFloat = 0.4
   
   var accelerometerX: UIAccelerationValue = 0
   var accelerometerY: UIAccelerationValue = 0
   var lastUpdateTime: CFTimeInterval = 0
 
   let motionManager = CMMotionManager()
-  
+  static let Pi = CGFloat(M_PI)
+  let DegreesToRadians = Pi / 180
+  let RadiansToDegrees = 180 / Pi
   
   // MARK: - Setup
   override func didMoveToView(view: SKView) {
@@ -62,10 +65,48 @@ class GameScene: SKScene {
     
     var newX = playerSprite.position.x + playerVelocity.dx * CGFloat(dt)
     var newY = playerSprite.position.y + playerVelocity.dy * CGFloat(dt)
-    newX = min(size.width, max(0, newX));
-    newY = min(size.height, max(0, newY));
+    var collidedWithVerticalBorder = false
+    var collidedWithHorizontalBorder = false
+    
+    if newX < 0 {
+      newX = 0
+      collidedWithVerticalBorder = true
+    } else if newX > size.width {
+      newX = size.width
+      collidedWithVerticalBorder = true
+    }
+    
+    if newY < 0 {
+      newY = 0
+      collidedWithHorizontalBorder = true
+    } else if newY > size.height {
+      newY = size.height
+      collidedWithHorizontalBorder = true
+    }
+    
+    if collidedWithVerticalBorder {
+      playerAcceleration.dx = -playerAcceleration.dx * BorderCollisionDamping
+      playerVelocity.dx = -playerVelocity.dx * BorderCollisionDamping
+      playerAcceleration.dy = playerAcceleration.dy * BorderCollisionDamping
+      playerVelocity.dy = playerVelocity.dy * BorderCollisionDamping
+    }
+    
+    if collidedWithHorizontalBorder {
+      playerAcceleration.dx = playerAcceleration.dx * BorderCollisionDamping
+      playerVelocity.dx = playerVelocity.dx * BorderCollisionDamping
+      playerAcceleration.dy = -playerAcceleration.dy * BorderCollisionDamping
+      playerVelocity.dy = -playerVelocity.dy * BorderCollisionDamping
+    }
     
     playerSprite.position = CGPoint(x: newX, y: newY)
+    
+    let RotationThreshold: CGFloat = 40
+    
+    let speed = sqrt(playerVelocity.dx * playerVelocity.dx + playerVelocity.dy * playerVelocity.dy)
+    if speed > RotationThreshold {
+      let angle = atan2(playerVelocity.dy, playerVelocity.dx)
+      playerSprite.zRotation = angle - 90 * DegreesToRadians
+    }    
   }
   
   
