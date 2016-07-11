@@ -14,6 +14,7 @@
 		1466A1951D342301001DD56F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1466A1931D342301001DD56F /* Main.storyboard */; };
 		1466A1971D342301001DD56F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1466A1961D342301001DD56F /* Assets.xcassets */; };
 		1466A19A1D342301001DD56F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1466A1981D342301001DD56F /* LaunchScreen.storyboard */; };
+		1466A1A31D342797001DD56F /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 1466A1A21D342797001DD56F /* Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1466A1961D342301001DD56F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1466A1991D342301001DD56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1466A19B1D342301001DD56F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1466A1A21D342797001DD56F /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +64,21 @@
 				1466A18D1D342301001DD56F /* GameScene.sks */,
 				1466A18F1D342301001DD56F /* GameScene.swift */,
 				1466A1911D342301001DD56F /* GameViewController.swift */,
+				1466A1A11D3426CD001DD56F /* Supporting Files */,
+			);
+			path = CatTrigReview;
+			sourceTree = "<group>";
+		};
+		1466A1A11D3426CD001DD56F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1466A1A21D342797001DD56F /* Sounds */,
 				1466A1931D342301001DD56F /* Main.storyboard */,
 				1466A1961D342301001DD56F /* Assets.xcassets */,
 				1466A1981D342301001DD56F /* LaunchScreen.storyboard */,
 				1466A19B1D342301001DD56F /* Info.plist */,
 			);
-			path = CatTrigReview;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1466A1A31D342797001DD56F /* Sounds in Resources */,
 				1466A18E1D342301001DD56F /* GameScene.sks in Resources */,
 				1466A19A1D342301001DD56F /* LaunchScreen.storyboard in Resources */,
 				1466A1971D342301001DD56F /* Assets.xcassets in Resources */,
@@ -294,6 +306,7 @@
 				1466A1A01D342301001DD56F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
